@@ -5,7 +5,7 @@
 
 
 import React, { Suspense } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Canvas, useFrame, useThree, ThreeElements } from '@react-three/fiber';
 import * as THREE from 'three';
 import { Environment } from './components/World/Environment';
 import { Player } from './components/World/Player';
@@ -13,6 +13,13 @@ import { LevelManager } from './components/World/LevelManager';
 import { Effects } from './components/World/Effects';
 import { HUD } from './components/UI/HUD';
 import { useStore } from './store';
+
+// Fix for missing R3F types in JSX
+declare global {
+  namespace JSX {
+    interface IntrinsicElements extends ThreeElements {}
+  }
+}
 
 // Dynamic Camera Controller
 const CameraController = () => {
